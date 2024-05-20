@@ -1,8 +1,5 @@
 import { Request, Response } from 'express';
 import { StudentServices } from './student_service';
-
-import { z } from 'zod';
-
 import studentValidationSchema from './student.zod.validation';
 
 const createStudent = async (req: Request, res: Response) => {
@@ -74,7 +71,7 @@ const getSingleStudent = async (req: Request, res: Response) => {
 const deleteStudent = async (req: Request, res: Response) => {
   try {
     const { studentId } = req.params;
-    const result = await StudentServices.deleteSingleStudentFromDB(studentId);
+    const result = await StudentServices.deleteStudentFromDB(studentId);
     res.status(200).json({
       success: true,
       message: 'student is deleted  successfully',
