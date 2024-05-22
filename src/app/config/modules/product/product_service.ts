@@ -10,7 +10,7 @@ import { TProduct } from './product.interface';
 //
 //** */
 const createProductIntoDB = async (productData: TProduct) => {
-  const existingProduct = await Product.findOne({ name: productData.name });
+  const existingProduct = await Product.findOne({ id: productData.id });
   if (existingProduct) {
     throw new Error('Product already exists!');
   }
@@ -63,9 +63,12 @@ const getAllProductsFromDB = async (searchTerm?: string) => {
 //** */
 
 const getSingleProductFromDB = async (id: string) => {
-  console.log(id);
+  //console.log(id);
 
-  const result = await Product.findOne({ _id: id, isDeleted: false }).exec();
+  const result = await Product.findOne({
+    _id: id,
+    isDeleted: false,
+  }).exec();
   if (!result) {
     throw new Error('Product not found!');
   }
@@ -82,8 +85,8 @@ const getSingleProductFromDB = async (id: string) => {
 //
 //**
 
-const deleteProductFromDB = async (id: string) => {
-  const result = await Product.updateOne({ id }, { isDeleted: true });
+const deleteProductFromDB = async (_id: string) => {
+  const result = await Product.updateOne({ _id }, { isDeleted: true });
   return result;
 };
 //**
@@ -101,8 +104,6 @@ const updateProductInDB = async (
   productId: string,
   updateData: Partial<TProduct>,
 ) => {
-  console.log(productId);
-
   const product = await Product.findById(productId);
   if (!product) {
     throw new Error('Product not found!');
@@ -118,6 +119,8 @@ const updateProductInDB = async (
     if (updateData.inventory.quantity === 0)
       updateData.inventory.inStock = false;
   } else throw new Error('Insufficient quantity available in inventory');
+
+  //.log(updateData);
 
   const result = await Product.findByIdAndUpdate(productId, updateData, {
     new: true,

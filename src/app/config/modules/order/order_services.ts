@@ -36,7 +36,7 @@ const getAllOrdersFromDB = async (email?: string) => {
   }
   const result = await Order.find(query);
   if (result.length === 0) {
-    throw new Error('Order not foundee');
+    throw new Error('Order not found');
   }
   return result;
 };
