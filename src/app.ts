@@ -12,7 +12,7 @@ app.use(cors());
 //application route
 
 app.use('', ProductRoutes);
-app.use('/api/v1/students', OrderRoutes);
+app.use('', OrderRoutes);
 //
 //
 //
