@@ -47,7 +47,7 @@ const getAllOrders = async (req: Request, res: Response) => {
     let result;
 
     result = await OrderService.getAllOrdersFromDB(email);
-    console.log(result);
+    //console.log(result);
 
     res.status(200).json({
       success: true,
