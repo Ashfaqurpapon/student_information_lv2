@@ -13,11 +13,16 @@ app.use(cors());
 
 app.use('', ProductRoutes);
 app.use('', OrderRoutes);
+app.get('/', (req, res, next) => {
+  res.status(200).json({
+    success: true,
+    message: 'Welcome to my server',
+  });
+});
 //
 //
 //
-//
-//
+
 //handle error
 //
 //
