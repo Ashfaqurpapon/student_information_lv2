@@ -14,6 +14,7 @@ const createProductIntoDB = async (productData: TProduct) => {
   if (existingProduct) {
     throw new Error('Product already exists!');
   }
+  const dbProduct = await Product.findOne({ name: productData.name }).lean();
 
   const result = await Product.create(productData);
   return result;

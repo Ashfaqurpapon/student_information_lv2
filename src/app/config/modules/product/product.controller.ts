@@ -11,6 +11,7 @@ import ProductValidationSchema from './product.zod.validation';
 const createProduct = async (req: Request, res: Response) => {
   try {
     const productData = req.body.product;
+    // console.log(productData);
 
     // Validate using Zod
     const validatedData = ProductValidationSchema.parse(productData);

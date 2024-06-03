@@ -5,7 +5,7 @@ const OrderSchema = new Schema<IOrder, IOrderModel>({
   email: {
     type: String,
     required: [true, 'must be provide valid email'],
-    unique: true,
+    //unique: true,
   },
   productId: { type: String, required: true },
   price: { type: Number, required: true },

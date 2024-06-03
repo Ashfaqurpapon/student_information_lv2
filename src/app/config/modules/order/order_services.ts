@@ -10,10 +10,10 @@ import { IOrder } from './order_interface';
 //
 //
 const createOrderInDB = async (orderData: IOrder) => {
-  const order = await Order.findOne({ email: orderData.email });
-  if (order) {
-    throw new Error('Order already exists!');
-  }
+  // const order = await Order.findOne({ email: orderData.email });
+  // if (order) {
+  //   throw new Error('Order already exists!');
+  // }
   const result = await Order.create(orderData);
   return result;
 };

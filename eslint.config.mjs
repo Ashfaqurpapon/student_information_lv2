@@ -4,9 +4,6 @@ import tseslint from 'typescript-eslint';
 
 export default [
   { languageOptions: { globals: globals.browser } },
-
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
   {
     extends: [
       'eslint:recommended',
@@ -27,4 +24,6 @@ export default [
       process: 'readonly',
     },
   },
+  pluginJs.configs.recommended,
+  ...tseslint.configs.recommended,
 ];
